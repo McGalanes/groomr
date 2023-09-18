@@ -14,4 +14,22 @@
  * limitations under the License.
  */
 
-// Root build.gradle.kts
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath(libs.android.tools.build.gradle.plugin)
+        classpath(libs.kotlin.gradle.plugin)
+        classpath(libs.hilt.gradle.plugin)
+    }
+}
+
+plugins {
+    alias(libs.plugins.kotlin.jvm) apply false
+    alias(libs.plugins.groomr.android.application) apply false
+    alias(libs.plugins.groomr.android.library) apply false
+    alias(libs.plugins.groomr.android.test) apply false
+    alias(libs.plugins.groomr.compose) apply false
+}

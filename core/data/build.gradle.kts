@@ -14,25 +14,18 @@
  * limitations under the License.
  */
 
-pluginManagement {
-    includeBuild("build-logic")
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
+@Suppress("DSL_SCOPE_VIOLATION") // Remove when fixed https://youtrack.jetbrains.com/issue/KTIJ-19369
+plugins {
+    alias(libs.plugins.groomr.android.library)
 }
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-rootProject.name = "Groomr"
 
-include(":app")
-include(":core:data")
-include(":core:testing")
-include(":core:ui")
-include(":feature:foo")
+android {
+    namespace = "com.github.mcgalanes.groomr.core.data"
+}
+
+dependencies {
+    implementation(libs.kotlinx.coroutines.android)
+
+    testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
+}

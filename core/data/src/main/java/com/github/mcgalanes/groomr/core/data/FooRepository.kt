@@ -14,25 +14,12 @@
  * limitations under the License.
  */
 
-pluginManagement {
-    includeBuild("build-logic")
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
-}
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-rootProject.name = "Groomr"
+package com.github.mcgalanes.groomr.core.data
 
-include(":app")
-include(":core:data")
-include(":core:testing")
-include(":core:ui")
-include(":feature:foo")
+import kotlinx.coroutines.flow.Flow
+
+interface FooRepository {
+    val foos: Flow<List<String>>
+
+    suspend fun add(name: String)
+}

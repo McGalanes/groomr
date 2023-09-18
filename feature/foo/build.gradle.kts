@@ -16,38 +16,36 @@
 
 @Suppress("DSL_SCOPE_VIOLATION") // Remove when fixed https://youtrack.jetbrains.com/issue/KTIJ-19369
 plugins {
-    alias(libs.plugins.groomr.android.application)
+    alias(libs.plugins.groomr.android.library)
+    alias(libs.plugins.groomr.compose)
 }
 
 android {
-    namespace = "com.github.mcgalanes.groomr"
-
-    defaultConfig {
-        applicationId = "com.github.mcgalanes.groomr"
-    }
+    namespace = "com.github.mcgalanes.groomr.feature.foo"
 }
 
 dependencies {
+    implementation(project(":core:data"))
     implementation(project(":core:ui"))
-    implementation(project(":feature:foo"))
 
     // Core Android dependencies
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
 
     // Arch Components
+    implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
-    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.hilt.navigation.compose)
 
     // Compose
-    val composeBom = platform(libs.androidx.compose.bom)
-    implementation(composeBom)
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
 
     // Tooling
     debugImplementation(libs.androidx.compose.ui.tooling)
+    debugImplementation(libs.androidx.compose.ui.test.manifest)
+
+    testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
 }

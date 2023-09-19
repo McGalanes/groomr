@@ -28,8 +28,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:ui"))
-    implementation(project(":feature:foo"))
+    implementation(projects.core.ui)
+    implementation(projects.feature.foo)
 
     // Core Android dependencies
     implementation(libs.androidx.core.ktx)

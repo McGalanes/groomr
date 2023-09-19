@@ -25,8 +25,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:data"))
-    implementation(project(":core:ui"))
+    implementation(projects.core.data)
+    implementation(projects.core.ui)
 
     // Core Android dependencies
     implementation(libs.androidx.activity.compose)

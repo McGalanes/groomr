@@ -17,6 +17,7 @@
 @Suppress("DSL_SCOPE_VIOLATION") // Remove when fixed https://youtrack.jetbrains.com/issue/KTIJ-19369
 plugins {
     alias(libs.plugins.groomr.android.application)
+    alias(libs.plugins.groomr.compose)
 }
 
 android {
@@ -29,7 +30,7 @@ android {
 
 dependencies {
     implementation(projects.core.ui)
-    implementation(projects.feature.foo)
+    implementation(projects.feature.userstory.create)
 
     // Core Android dependencies
     implementation(libs.androidx.core.ktx)

@@ -21,7 +21,7 @@ plugins {
 }
 
 android {
-    namespace = "com.github.mcgalanes.groomr.feature.foo"
+    namespace = "com.github.mcgalanes.groomr.feature.userstory.create"
 }
 
 dependencies {

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="userstory_create_need_form_collapsed_title">Need</string>
+    <string name="userstory_create_need_form_title">What\'s your need?</string>
+    <string name="userstory_create_need_form_persona_label">Persona</string>
+    <string name="userstory_create_need_form_persona_placeholder">Who?</string>
+    <string name="userstory_create_need_form_wish_label">Wish</string>
+    <string name="userstory_create_need_form_wish_placeholder">What?</string>
+    <string name="userstory_create_need_form_purpose_label">Purpose</string>
+    <string name="userstory_create_need_form_purpose_placeholder">Why?</string>
+</resources>

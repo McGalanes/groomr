@@ -16,21 +16,20 @@
 
 package com.github.mcgalanes.groomr.ui
 
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.github.mcgalanes.groomr.feature.foo.ui.FooScreen
+import com.github.mcgalanes.groomr.feature.userstory.create.navigation.createUserStoryRoute
+import com.github.mcgalanes.groomr.feature.userstory.create.navigation.createUserStoryScreen
 
 @Composable
 fun MainNavigation() {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "main") {
-        composable("main") { FooScreen(modifier = Modifier.padding(16.dp)) }
-        // TODO: Add more destinations
+    NavHost(
+        navController = navController,
+        startDestination = createUserStoryRoute,
+    ) {
+        createUserStoryScreen()
     }
 }

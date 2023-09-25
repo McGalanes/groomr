@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -18,6 +17,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.github.mcgalanes.groomr.core.ui.GroomrTheme
+import com.github.mcgalanes.groomr.core.ui.component.Input
 import com.github.mcgalanes.groomr.core.ui.component.VerticalSpacer
 import com.github.mcgalanes.groomr.feature.userstory.create.R
 
@@ -95,22 +95,4 @@ fun NeedForm(
             onValueChange = onPurposeChange,
         )
     }
-}
-
-@Composable
-private fun Input(
-    value: String,
-    label: String,
-    placeholder: String,
-    onValueChange: (String) -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    OutlinedTextField(
-        modifier = modifier,
-        label = { Text(text = label) },
-        placeholder = { Text(text = placeholder) },
-        shape = MaterialTheme.shapes.large,
-        value = value,
-        onValueChange = onValueChange,
-    )
 }

@@ -20,7 +20,6 @@ import androidx.compose.ui.unit.dp
 import com.github.mcgalanes.groomr.core.ui.GroomrTheme
 import com.github.mcgalanes.groomr.core.ui.component.VerticalSpacer
 import com.github.mcgalanes.groomr.feature.userstory.create.R
-import com.github.mcgalanes.groomr.feature.userstory.create.ui.component.DrawerForm
 
 @Preview(showSystemUi = true)
 @Composable
@@ -41,7 +40,6 @@ private fun NeedFormPreview() {
             personaValue = "",
             wishValue = "",
             purposeValue = "",
-            expanded = expanded,
             onPersonaChange = {},
             onWishChange = {},
             onPurposeChange = {},
@@ -54,57 +52,49 @@ fun NeedForm(
     personaValue: String,
     wishValue: String,
     purposeValue: String,
-    expanded: Boolean,
     onPersonaChange: (String) -> Unit,
     onWishChange: (String) -> Unit,
     onPurposeChange: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    DrawerForm(
+    Column(
         modifier = modifier,
-        expanded = expanded,
-        title = stringResource(R.string.userstory_create_need_form_collapsed_title),
-        expandedContent = {
-            Column(
-                modifier = Modifier.padding(16.dp),
-            ) {
-                Text(
-                    text = stringResource(R.string.userstory_create_need_form_title),
-                    style = MaterialTheme.typography.titleMedium,
-                )
+    ) {
+        Text(
+            text = stringResource(R.string.userstory_create_need_form_title),
+            style = MaterialTheme.typography.titleMedium,
+        )
 
-                VerticalSpacer(24.dp)
+        VerticalSpacer(24.dp)
 
-                Input(
-                    modifier = Modifier.fillMaxWidth(),
-                    value = personaValue,
-                    placeholder = stringResource(R.string.userstory_create_need_form_persona_placeholder),
-                    label = stringResource(R.string.userstory_create_need_form_persona_label),
-                    onValueChange = onPersonaChange,
-                )
+        Input(
+            modifier = Modifier.fillMaxWidth(),
+            value = personaValue,
+            placeholder = stringResource(R.string.userstory_create_need_form_persona_placeholder),
+            label = stringResource(R.string.userstory_create_need_form_persona_label),
+            onValueChange = onPersonaChange,
+        )
 
-                VerticalSpacer(16.dp)
+        VerticalSpacer(8.dp)
 
-                Input(
-                    modifier = Modifier.fillMaxWidth(),
-                    value = wishValue,
-                    placeholder = stringResource(R.string.userstory_create_need_form_wish_placeholder),
-                    label = stringResource(R.string.userstory_create_need_form_wish_label),
-                    onValueChange = onWishChange,
-                )
+        Input(
+            modifier = Modifier.fillMaxWidth(),
+            value = wishValue,
+            placeholder = stringResource(R.string.userstory_create_need_form_wish_placeholder),
+            label = stringResource(R.string.userstory_create_need_form_wish_label),
+            onValueChange = onWishChange,
+        )
 
-                VerticalSpacer(16.dp)
+        VerticalSpacer(8.dp)
 
-                Input(
-                    modifier = Modifier.fillMaxWidth(),
-                    value = purposeValue,
-                    placeholder = stringResource(R.string.userstory_create_need_form_purpose_placeholder),
-                    label = stringResource(R.string.userstory_create_need_form_purpose_label),
-                    onValueChange = onPurposeChange,
-                )
-            }
-        },
-    )
+        Input(
+            modifier = Modifier.fillMaxWidth(),
+            value = purposeValue,
+            placeholder = stringResource(R.string.userstory_create_need_form_purpose_placeholder),
+            label = stringResource(R.string.userstory_create_need_form_purpose_label),
+            onValueChange = onPurposeChange,
+        )
+    }
 }
 
 @Composable

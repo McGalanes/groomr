@@ -23,11 +23,11 @@ import com.github.mcgalanes.groomr.feature.userstory.create.R
 
 @Preview(showSystemUi = true)
 @Composable
-private fun NeedFormPreview() {
+private fun KpiFormPreview() {
     GroomrTheme {
         var expanded by remember { mutableStateOf(true) }
 
-        NeedForm(
+        KpiForm(
             modifier = Modifier
                 .padding(24.dp)
                 .fillMaxWidth()
@@ -37,31 +37,23 @@ private fun NeedFormPreview() {
                 ) {
                     expanded = !expanded
                 },
-            personaValue = "",
-            wishValue = "",
-            purposeValue = "",
-            onPersonaChange = {},
-            onWishChange = {},
-            onPurposeChange = {},
+            kpiValue = "",
+            onKpiChange = {},
         )
     }
 }
 
 @Composable
-fun NeedForm(
-    personaValue: String,
-    wishValue: String,
-    purposeValue: String,
-    onPersonaChange: (String) -> Unit,
-    onWishChange: (String) -> Unit,
-    onPurposeChange: (String) -> Unit,
+fun KpiForm(
+    kpiValue: String,
+    onKpiChange: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
         modifier = modifier,
     ) {
         Text(
-            text = stringResource(R.string.userstory_create_need_form_title),
+            text = stringResource(R.string.userstory_create_kpi_form_title),
             style = MaterialTheme.typography.titleMedium,
         )
 
@@ -69,27 +61,9 @@ fun NeedForm(
 
         Input(
             modifier = Modifier.fillMaxWidth(),
-            value = personaValue,
-            placeholder = stringResource(R.string.userstory_create_need_form_persona_placeholder),
-            onValueChange = onPersonaChange,
-        )
-
-        VerticalSpacer(8.dp)
-
-        Input(
-            modifier = Modifier.fillMaxWidth(),
-            value = wishValue,
-            placeholder = stringResource(R.string.userstory_create_need_form_wish_placeholder),
-            onValueChange = onWishChange,
-        )
-
-        VerticalSpacer(8.dp)
-
-        Input(
-            modifier = Modifier.fillMaxWidth(),
-            value = purposeValue,
-            placeholder = stringResource(R.string.userstory_create_need_form_purpose_placeholder),
-            onValueChange = onPurposeChange,
+            value = kpiValue,
+            placeholder = stringResource(R.string.userstory_create_kpi_form_placeholder),
+            onValueChange = onKpiChange,
         )
     }
 }

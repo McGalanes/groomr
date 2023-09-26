@@ -14,14 +14,15 @@ fun Input(
     value: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
-    label: String? = null,
     placeholder: String? = null,
+    singleLine: Boolean = true,
 ) {
     TextField(
         modifier = modifier,
         placeholder = { Text(text = placeholder ?: "") },
         shape = SquircleShape(24.dp),
         value = value,
+        singleLine = singleLine,
         onValueChange = onValueChange,
         colors = TextFieldDefaults.colors(
             focusedIndicatorColor = Color.Transparent,

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="userstory_create_user_story_title_placeholder">My User Story…</string>
+
     <string name="userstory_create_need_form_collapsed_title">Need</string>
     <string name="userstory_create_need_form_title">What\'s your need?</string>
     <string name="userstory_create_need_form_persona_label">Persona</string>
@@ -8,4 +10,7 @@
     <string name="userstory_create_need_form_wish_placeholder">What?</string>
     <string name="userstory_create_need_form_purpose_label">Purpose</string>
     <string name="userstory_create_need_form_purpose_placeholder">Why?</string>
+
+    <string name="userstory_create_kpi_form_title">Success KPI</string>
+    <string name="userstory_create_kpi_form_placeholder">We were right to implement this feature if…</string>
 </resources>

@@ -13,6 +13,8 @@ fun NavController.navigateToCreateUserStory(navOptions: NavOptions? = null) =
 
 fun NavGraphBuilder.createUserStoryScreen() {
     composable(route = createUserStoryRoute) {
-        CreateUserStoryScreen()
+        CreateUserStoryScreen(
+            onBackClick = {},
+        )
     }
 }

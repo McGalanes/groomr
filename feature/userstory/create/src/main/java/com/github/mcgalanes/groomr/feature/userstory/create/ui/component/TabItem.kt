@@ -58,8 +58,8 @@ fun TabItem(
                     Modifier.background(MaterialTheme.colorScheme.primaryContainer)
                 else
                     Modifier,
-            )
-            .padding(8.dp),
+            ).padding(vertical = 6.dp, horizontal = 12.dp)
+
     ) {
         Text(
             text = label,

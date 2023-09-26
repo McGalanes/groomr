@@ -16,7 +16,10 @@ import androidx.compose.ui.unit.dp
 import com.github.mcgalanes.groomr.core.ui.GroomrTheme
 import com.github.mcgalanes.groomr.core.ui.component.HorizontalSpacer
 import com.github.mcgalanes.groomr.core.ui.component.Input
+import com.github.mcgalanes.groomr.core.ui.component.VerticalSpacer
+import com.github.mcgalanes.groomr.feature.userstory.create.domain.GroomStep
 import com.github.mcgalanes.groomr.feature.userstory.create.ui.component.FormStepper
+import com.github.mcgalanes.groomr.feature.userstory.create.ui.component.TabRow
 import com.github.mcgalanes.groomr.feature.userstory.create.ui.component.form.NeedForm
 
 @Preview
@@ -37,9 +40,10 @@ fun CreateUserStoryScreen(
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp),
+                    .padding(vertical = 16.dp),
             ) {
                 Row(
+                    modifier = Modifier.padding(start = 16.dp, end = 6.dp),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Input(
@@ -60,6 +64,14 @@ fun CreateUserStoryScreen(
                         Text(text = "Cancel", color = MaterialTheme.colorScheme.onPrimary)
                     }
                 }
+
+                VerticalSpacer(16.dp)
+
+                TabRow(
+                    steps = GroomStep.entries.toTypedArray(),
+                    selected = GroomStep.Kpi,
+                    onItemClick = {},
+                )
             }
         },
     ) {

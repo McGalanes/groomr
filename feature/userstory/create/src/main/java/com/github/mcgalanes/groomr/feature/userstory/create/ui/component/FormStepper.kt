@@ -55,7 +55,7 @@ fun FormStepper(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .defaultMinSize(minHeight = 128.dp),
+                    .defaultMinSize(minHeight = 64.dp),
             ) {
                 headerContent()
             }

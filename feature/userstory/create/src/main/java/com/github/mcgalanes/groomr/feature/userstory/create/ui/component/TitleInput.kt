@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -40,11 +41,13 @@ fun TitleInput(
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val contentColor = MaterialTheme.colorScheme.onPrimaryContainer
+
     BasicTextField(
         modifier = modifier,
         textStyle = MaterialTheme.typography.headlineSmall
-            .copy(color = MaterialTheme.colorScheme.onPrimary),
-        cursorBrush = SolidColor(MaterialTheme.colorScheme.onPrimary),
+            .copy(color = contentColor),
+        cursorBrush = SolidColor(contentColor),
         value = value,
         onValueChange = onValueChange,
         decorationBox = { innerTextField ->
@@ -56,7 +59,7 @@ fun TitleInput(
                     Text(
                         text = placeholder,
                         style = MaterialTheme.typography.headlineSmall,
-                        color = MaterialTheme.colorScheme.onPrimary.copy(alpha = .4f),
+                        color = contentColor.copy(alpha = .5f),
                     )
                 }
                 innerTextField()

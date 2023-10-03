@@ -16,6 +16,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.github.mcgalanes.groomr.core.ui.GroomrTheme
 import com.github.mcgalanes.groomr.core.ui.component.Input
 import com.github.mcgalanes.groomr.core.ui.component.VerticalSpacer
@@ -37,9 +39,7 @@ private fun NeedFormPreview() {
                 ) {
                     expanded = !expanded
                 },
-            personaValue = "",
-            wishValue = "",
-            purposeValue = "",
+            state = UiState.Default,
             onPersonaChange = {},
             onWishChange = {},
             onPurposeChange = {},
@@ -49,9 +49,23 @@ private fun NeedFormPreview() {
 
 @Composable
 fun NeedForm(
-    personaValue: String,
-    wishValue: String,
-    purposeValue: String,
+    modifier: Modifier = Modifier,
+    viewModel: NeedFormViewModel = hiltViewModel(),
+) {
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
+    NeedForm(
+        modifier = modifier,
+        state = uiState,
+        onPersonaChange = viewModel::onPersonChange,
+        onWishChange = viewModel::onWishChange,
+        onPurposeChange = viewModel::onPurposeChange,
+    )
+}
+
+@Composable
+private fun NeedForm(
+    state: UiState,
     onPersonaChange: (String) -> Unit,
     onWishChange: (String) -> Unit,
     onPurposeChange: (String) -> Unit,
@@ -69,7 +83,7 @@ fun NeedForm(
 
         Input(
             modifier = Modifier.fillMaxWidth(),
-            value = personaValue,
+            value = state.persona,
             placeholder = stringResource(R.string.userstory_create_need_form_persona_placeholder),
             onValueChange = onPersonaChange,
         )
@@ -78,7 +92,7 @@ fun NeedForm(
 
         Input(
             modifier = Modifier.fillMaxWidth(),
-            value = wishValue,
+            value = state.wish,
             placeholder = stringResource(R.string.userstory_create_need_form_wish_placeholder),
             onValueChange = onWishChange,
         )
@@ -87,7 +101,7 @@ fun NeedForm(
 
         Input(
             modifier = Modifier.fillMaxWidth(),
-            value = purposeValue,
+            value = state.purpose,
             placeholder = stringResource(R.string.userstory_create_need_form_purpose_placeholder),
             onValueChange = onPurposeChange,
         )

@@ -73,13 +73,7 @@ private fun CreateUserStoryScreen(
             when (step) {
                 GroomStep.Need -> {
                     NeedForm(
-                        modifier = Modifier.padding(16.dp),
-                        personaValue = "",
-                        wishValue = "",
-                        purposeValue = "",
-                        onPersonaChange = { TODO() },
-                        onWishChange = { TODO() },
-                        onPurposeChange = { TODO() },
+                        modifier = Modifier.padding(16.dp), //extract to parent
                     )
                 }
 

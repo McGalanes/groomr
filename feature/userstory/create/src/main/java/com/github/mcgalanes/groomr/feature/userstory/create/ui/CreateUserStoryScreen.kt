@@ -1,6 +1,5 @@
 package com.github.mcgalanes.groomr.feature.userstory.create.ui
 
-import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -13,9 +12,9 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.github.mcgalanes.groomr.core.ui.GroomrTheme
 import com.github.mcgalanes.groomr.feature.userstory.create.domain.GroomStep
+import com.github.mcgalanes.groomr.feature.userstory.create.ui.component.CreateUserStoryBody
 import com.github.mcgalanes.groomr.feature.userstory.create.ui.component.CreateUserStoryHeader
 import com.github.mcgalanes.groomr.feature.userstory.create.ui.component.FormStepper
-import com.github.mcgalanes.groomr.feature.userstory.create.ui.component.form.need.NeedForm
 
 @Preview
 @Composable
@@ -66,19 +65,6 @@ private fun CreateUserStoryScreen(
             )
         },
     ) {
-        Crossfade(
-            targetState = state.currentStep,
-            label = "stepper_form_crossfade",
-        ) { step ->
-            when (step) {
-                GroomStep.Need -> {
-                    NeedForm(
-                        modifier = Modifier.padding(16.dp), //extract to parent
-                    )
-                }
-
-                else -> Unit
-            }
-        }
+        CreateUserStoryBody(currentStep = state.currentStep)
     }
 }

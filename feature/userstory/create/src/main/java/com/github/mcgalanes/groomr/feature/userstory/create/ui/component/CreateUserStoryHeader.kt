@@ -4,11 +4,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.ArrowBackIosNew
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -21,10 +16,10 @@ import com.github.mcgalanes.groomr.feature.userstory.create.domain.GroomStep
 
 @Composable
 fun CreateUserStoryHeader(
+    currentStep: GroomStep,
     titleValue: String,
     onTitleValueChange: (String) -> Unit,
     onStepTabClick: (GroomStep) -> Unit,
-    onBackClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -36,15 +31,15 @@ fun CreateUserStoryHeader(
                 .fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            IconButton(
-                onClick = onBackClick,
-            ) {
-                Icon(
-                    imageVector = Icons.Rounded.ArrowBackIosNew,
-                    tint = MaterialTheme.colorScheme.onPrimaryContainer,
-                    contentDescription = null,
-                )
-            }
+            //IconButton(
+            //    onClick = onQuitClick,
+            //) {
+            //    Icon(
+            //        imageVector = Icons.Rounded.ArrowBackIosNew,
+            //        tint = MaterialTheme.colorScheme.onPrimaryContainer,
+            //        contentDescription = null,
+            //    )
+            //}
 
             HorizontalSpacer(16.dp)
 
@@ -60,7 +55,7 @@ fun CreateUserStoryHeader(
 
         TabRow(
             steps = GroomStep.entries.toTypedArray(),
-            selected = GroomStep.Kpi,
+            selected = currentStep,
             onItemClick = onStepTabClick,
         )
     }

@@ -1,4 +1,4 @@
-package com.github.mcgalanes.groomr.feature.userstory.create.ui.component.form
+package com.github.mcgalanes.groomr.feature.userstory.create.ui.component.form.kpi
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource

@@ -1,6 +1,7 @@
 package com.github.mcgalanes.groomr.feature.userstory.create.ui.component.form.need
 
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class NeedFormViewModelTest {

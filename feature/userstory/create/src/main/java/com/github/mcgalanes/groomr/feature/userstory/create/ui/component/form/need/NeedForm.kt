@@ -22,6 +22,7 @@ import com.github.mcgalanes.groomr.core.ui.GroomrTheme
 import com.github.mcgalanes.groomr.core.ui.component.Input
 import com.github.mcgalanes.groomr.core.ui.component.VerticalSpacer
 import com.github.mcgalanes.groomr.feature.userstory.create.R
+import com.github.mcgalanes.groomr.feature.userstory.create.ui.component.AdviceSection
 
 @Preview(showSystemUi = true)
 @Composable
@@ -76,7 +77,7 @@ private fun NeedForm(
     ) {
         Text(
             text = stringResource(R.string.userstory_create_need_form_title),
-            style = MaterialTheme.typography.titleMedium,
+            style = MaterialTheme.typography.titleLarge,
         )
 
         VerticalSpacer(24.dp)
@@ -104,6 +105,17 @@ private fun NeedForm(
             value = state.purpose,
             placeholder = stringResource(R.string.userstory_create_need_form_purpose_placeholder),
             onValueChange = onPurposeChange,
+        )
+
+        VerticalSpacer(24.dp)
+
+        AdviceSection(
+            modifier = modifier,
+            advices = mapOf(
+                stringResource(R.string.userstory_create_need_form_advice_1_title) to stringResource(R.string.userstory_create_need_form_advice_1_description),
+                stringResource(R.string.userstory_create_need_form_advice_2_title) to stringResource(R.string.userstory_create_need_form_advice_2_description),
+                stringResource(R.string.userstory_create_need_form_advice_3_title) to stringResource(R.string.userstory_create_need_form_advice_3_description),
+            ),
         )
     }
 }

@@ -2,6 +2,8 @@
 <resources>
     <string name="userstory_create_user_story_title_placeholder">My User Story…</string>
 
+    <string name="userstory_create_advice_section_title">Get some help?</string>
+
     <string name="userstory_create_need_form_collapsed_title">Need</string>
     <string name="userstory_create_need_form_title">What\'s your need?</string>
     <string name="userstory_create_need_form_persona_label">Persona</string>
@@ -10,6 +12,12 @@
     <string name="userstory_create_need_form_wish_placeholder">What?</string>
     <string name="userstory_create_need_form_purpose_label">Purpose</string>
     <string name="userstory_create_need_form_purpose_placeholder">Why?</string>
+    <string name="userstory_create_need_form_advice_1_title">Progression</string>
+    <string name="userstory_create_need_form_advice_1_description">The PO explains the need.</string>
+    <string name="userstory_create_need_form_advice_2_title">Objectives</string>
+    <string name="userstory_create_need_form_advice_2_description">\u2022 Define a clear need [what] [who].\n\u2022 Give meaning to this need [why].</string>
+    <string name="userstory_create_need_form_advice_3_title">Advice</string>
+    <string name="userstory_create_need_form_advice_3_description">The team writes the smallest possible functional need.</string>
 
     <string name="userstory_create_kpi_form_title">Success KPI</string>
     <string name="userstory_create_kpi_form_placeholder">We were right to implement this feature if…</string>

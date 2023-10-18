@@ -16,6 +16,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.github.mcgalanes.groomr.core.ui.GroomrTheme
 import com.github.mcgalanes.groomr.core.ui.component.Input
 import com.github.mcgalanes.groomr.core.ui.component.VerticalSpacer
@@ -37,7 +39,7 @@ private fun KpiFormPreview() {
                 ) {
                     expanded = !expanded
                 },
-            kpiValue = "",
+            state = UiState.Default,
             onKpiChange = {},
         )
     }
@@ -45,7 +47,21 @@ private fun KpiFormPreview() {
 
 @Composable
 fun KpiForm(
-    kpiValue: String,
+    modifier: Modifier = Modifier,
+    viewModel: KpiFormViewModel = hiltViewModel(),
+) {
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
+    KpiForm(
+        modifier = modifier,
+        state = uiState,
+        onKpiChange = viewModel::onKpiChange,
+    )
+}
+
+@Composable
+private fun KpiForm(
+    state: UiState,
     onKpiChange: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -61,7 +77,7 @@ fun KpiForm(
 
         Input(
             modifier = Modifier.fillMaxWidth(),
-            value = kpiValue,
+            value = state.kpi,
             placeholder = stringResource(R.string.userstory_create_kpi_form_placeholder),
             onValueChange = onKpiChange,
         )

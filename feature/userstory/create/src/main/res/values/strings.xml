@@ -27,4 +27,11 @@
     <string name="userstory_create_business_value_form_title">Business Value</string>
     <string name="userstory_create_business_value_form_advice_title">Objective</string>
     <string name="userstory_create_business_value_form_advice_description">Business value helps prioritize the User Stories to be implemented.\nIt also helps identify which features bring a lot of value to our users.</string>
+    <string name="userstory_create_solution_form_title">Functional Solution</string>
+    <string name="userstory_create_solution_form_subtitle">How do we answer to the need?</string>
+
+    <string name="userstory_create_solution_form_advice_1_title">Objective</string>
+    <string name="userstory_create_solution_form_advice_1_description">To agree on the solution</string>
+    <string name="userstory_create_solution_form_advice_2_title">Example</string>
+    <string name="userstory_create_solution_form_advice_2_description">"Contact form that sends an e-mail"</string>
 </resources>

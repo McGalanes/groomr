@@ -15,7 +15,6 @@ fun Form(
     content: @Composable () -> Unit,
 ) {
     Column(modifier = modifier) {
-
         Text(
             text = title,
             style = MaterialTheme.typography.titleLarge,

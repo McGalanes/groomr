@@ -104,4 +104,16 @@ class CreateUserStoryViewModelTest {
         //THEN
         assertEquals(0, viewModel.uiState.value.businessValue)
     }
+
+    @Test
+    fun `on solution change, should update solution`() {
+        //GIVEN
+        val solution = "I can better report our success and failures"
+
+        //WHEN
+        viewModel.onSolutionChange(solution)
+
+        //THEN
+        assertEquals(solution, viewModel.uiState.value.solution)
+    }
 }

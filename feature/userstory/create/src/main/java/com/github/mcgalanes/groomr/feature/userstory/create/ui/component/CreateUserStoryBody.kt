@@ -9,6 +9,7 @@ import com.github.mcgalanes.groomr.feature.userstory.create.domain.GroomStep
 import com.github.mcgalanes.groomr.feature.userstory.create.ui.component.form.BusinessValueForm
 import com.github.mcgalanes.groomr.feature.userstory.create.ui.component.form.KpiForm
 import com.github.mcgalanes.groomr.feature.userstory.create.ui.component.form.NeedForm
+import com.github.mcgalanes.groomr.feature.userstory.create.ui.component.form.SolutionForm
 
 @Composable
 fun CreateUserStoryBody(
@@ -24,6 +25,7 @@ fun CreateUserStoryBody(
             GroomStep.Need -> NeedForm()
             GroomStep.Kpi -> KpiForm()
             GroomStep.BusinessValue -> BusinessValueForm()
+            GroomStep.Solution -> SolutionForm()
             else -> Unit
         }
     }

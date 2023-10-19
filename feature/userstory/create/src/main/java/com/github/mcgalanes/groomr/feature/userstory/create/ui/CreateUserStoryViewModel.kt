@@ -36,6 +36,10 @@ class CreateUserStoryViewModel : ViewModel() {
 
     fun onBusinessValueChange(businessValue: Int?) =
         _uiState.update { it.copy(businessValue = businessValue ?: 0) }
+
+    fun onSolutionChange(solution: String) {
+        _uiState.update { it.copy(solution = solution) }
+    }
 }
 
 data class UiState(
@@ -46,6 +50,7 @@ data class UiState(
     val purpose: String,
     val kpi: String,
     val businessValue: Int,
+    val solution: String,
 ) {
     companion object {
         val Default =
@@ -57,6 +62,7 @@ data class UiState(
                 purpose = "",
                 kpi = "",
                 businessValue = 0,
+                solution = "",
             )
     }
 }

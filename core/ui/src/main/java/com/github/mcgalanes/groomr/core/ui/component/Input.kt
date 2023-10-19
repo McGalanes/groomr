@@ -1,12 +1,10 @@
 package com.github.mcgalanes.groomr.core.ui.component
 
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 
 @Composable
 fun Input(
@@ -15,12 +13,14 @@ fun Input(
     modifier: Modifier = Modifier,
     placeholder: String? = null,
     singleLine: Boolean = true,
+    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
 ) {
     OutlinedTextField(
         modifier = modifier,
         placeholder = { Text(text = placeholder ?: "") },
         value = value,
         singleLine = singleLine,
+        keyboardOptions = keyboardOptions,
         onValueChange = onValueChange,
     )
 }

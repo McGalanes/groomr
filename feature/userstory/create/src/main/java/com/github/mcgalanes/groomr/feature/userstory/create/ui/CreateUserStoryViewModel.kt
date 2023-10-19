@@ -21,17 +21,42 @@ class CreateUserStoryViewModel : ViewModel() {
             it.copy(title = title)
         }
     }
+
+    fun onPersonChange(persona: String) =
+        _uiState.update { it.copy(persona = persona) }
+
+    fun onWishChange(wish: String) =
+        _uiState.update { it.copy(wish = wish) }
+
+    fun onPurposeChange(purpose: String) =
+        _uiState.update { it.copy(purpose = purpose) }
+
+    fun onKpiChange(kpi: String) =
+        _uiState.update { it.copy(kpi = kpi) }
+
+    fun onBusinessValueChange(businessValue: Int?) =
+        _uiState.update { it.copy(businessValue = businessValue ?: 0) }
 }
 
 data class UiState(
     val currentStep: GroomStep,
     val title: String,
+    val persona: String,
+    val wish: String,
+    val purpose: String,
+    val kpi: String,
+    val businessValue: Int,
 ) {
     companion object {
         val Default =
             UiState(
                 currentStep = GroomStep.Need,
                 title = "",
+                persona = "",
+                wish = "",
+                purpose = "",
+                kpi = "",
+                businessValue = 0,
             )
     }
 }

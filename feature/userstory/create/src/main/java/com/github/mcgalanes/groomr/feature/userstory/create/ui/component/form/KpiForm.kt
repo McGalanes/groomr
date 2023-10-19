@@ -1,12 +1,9 @@
-package com.github.mcgalanes.groomr.feature.userstory.create.ui.component.form.kpi
+package com.github.mcgalanes.groomr.feature.userstory.create.ui.component.form
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -20,8 +17,42 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.github.mcgalanes.groomr.core.ui.GroomrTheme
 import com.github.mcgalanes.groomr.core.ui.component.Input
-import com.github.mcgalanes.groomr.core.ui.component.VerticalSpacer
 import com.github.mcgalanes.groomr.feature.userstory.create.R
+import com.github.mcgalanes.groomr.feature.userstory.create.ui.CreateUserStoryViewModel
+
+
+@Composable
+fun KpiForm(
+    modifier: Modifier = Modifier,
+    viewModel: CreateUserStoryViewModel = hiltViewModel(),
+) {
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
+    KpiForm(
+        modifier = modifier,
+        kpi = uiState.kpi,
+        onKpiChange = viewModel::onKpiChange,
+    )
+}
+
+@Composable
+private fun KpiForm(
+    kpi: String,
+    onKpiChange: (String) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Form(
+        modifier = modifier,
+        title = stringResource(R.string.userstory_create_kpi_form_title),
+    ) {
+        Input(
+            modifier = Modifier.fillMaxWidth(),
+            value = kpi,
+            placeholder = stringResource(R.string.userstory_create_kpi_form_placeholder),
+            onValueChange = onKpiChange,
+        )
+    }
+}
 
 @Preview(showSystemUi = true)
 @Composable
@@ -39,47 +70,8 @@ private fun KpiFormPreview() {
                 ) {
                     expanded = !expanded
                 },
-            state = UiState.Default,
+            kpi = "",
             onKpiChange = {},
-        )
-    }
-}
-
-@Composable
-fun KpiForm(
-    modifier: Modifier = Modifier,
-    viewModel: KpiFormViewModel = hiltViewModel(),
-) {
-    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-
-    KpiForm(
-        modifier = modifier,
-        state = uiState,
-        onKpiChange = viewModel::onKpiChange,
-    )
-}
-
-@Composable
-private fun KpiForm(
-    state: UiState,
-    onKpiChange: (String) -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    Column(
-        modifier = modifier,
-    ) {
-        Text(
-            text = stringResource(R.string.userstory_create_kpi_form_title),
-            style = MaterialTheme.typography.titleMedium,
-        )
-
-        VerticalSpacer(24.dp)
-
-        Input(
-            modifier = Modifier.fillMaxWidth(),
-            value = state.kpi,
-            placeholder = stringResource(R.string.userstory_create_kpi_form_placeholder),
-            onValueChange = onKpiChange,
         )
     }
 }

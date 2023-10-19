@@ -6,8 +6,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.github.mcgalanes.groomr.feature.userstory.create.domain.GroomStep
-import com.github.mcgalanes.groomr.feature.userstory.create.ui.component.form.kpi.KpiForm
-import com.github.mcgalanes.groomr.feature.userstory.create.ui.component.form.need.NeedForm
+import com.github.mcgalanes.groomr.feature.userstory.create.ui.component.form.BusinessValueForm
+import com.github.mcgalanes.groomr.feature.userstory.create.ui.component.form.KpiForm
+import com.github.mcgalanes.groomr.feature.userstory.create.ui.component.form.NeedForm
 
 @Composable
 fun CreateUserStoryBody(
@@ -22,6 +23,7 @@ fun CreateUserStoryBody(
         when (step) {
             GroomStep.Need -> NeedForm()
             GroomStep.Kpi -> KpiForm()
+            GroomStep.BusinessValue -> BusinessValueForm()
             else -> Unit
         }
     }

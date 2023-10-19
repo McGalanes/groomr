@@ -21,6 +21,10 @@
 
     <string name="userstory_create_kpi_form_title">Success KPI</string>
     <string name="userstory_create_kpi_form_placeholder">We were right to implement this feature if…</string>
+    <string name="userstory_create_kpi_form_advice_title">Objective</string>
+    <string name="userstory_create_kpi_form_advice_description">Justify the business utility of the feature.</string>
 
     <string name="userstory_create_business_value_form_title">Business Value</string>
+    <string name="userstory_create_business_value_form_advice_title">Objective</string>
+    <string name="userstory_create_business_value_form_advice_description">Business value helps prioritize the User Stories to be implemented.\nIt also helps identify which features bring a lot of value to our users.</string>
 </resources>

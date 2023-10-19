@@ -2,6 +2,7 @@ package com.github.mcgalanes.groomr.feature.userstory.create.ui.component.form
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
@@ -17,8 +18,10 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.github.mcgalanes.groomr.core.ui.GroomrTheme
 import com.github.mcgalanes.groomr.core.ui.component.Input
+import com.github.mcgalanes.groomr.core.ui.component.VerticalSpacer
 import com.github.mcgalanes.groomr.feature.userstory.create.R
 import com.github.mcgalanes.groomr.feature.userstory.create.ui.CreateUserStoryViewModel
+import com.github.mcgalanes.groomr.feature.userstory.create.ui.component.AdviceSection
 
 
 @Composable
@@ -45,12 +48,23 @@ private fun KpiForm(
         modifier = modifier,
         title = stringResource(R.string.userstory_create_kpi_form_title),
     ) {
-        Input(
-            modifier = Modifier.fillMaxWidth(),
-            value = kpi,
-            placeholder = stringResource(R.string.userstory_create_kpi_form_placeholder),
-            onValueChange = onKpiChange,
-        )
+        Column {
+            Input(
+                modifier = Modifier.fillMaxWidth(),
+                value = kpi,
+                placeholder = stringResource(R.string.userstory_create_kpi_form_placeholder),
+                onValueChange = onKpiChange,
+            )
+
+            VerticalSpacer(24.dp)
+
+            AdviceSection(
+                modifier = modifier,
+                advices = mapOf(
+                    stringResource(R.string.userstory_create_kpi_form_advice_title) to stringResource(R.string.userstory_create_kpi_form_advice_description),
+                ),
+            )
+        }
     }
 }
 

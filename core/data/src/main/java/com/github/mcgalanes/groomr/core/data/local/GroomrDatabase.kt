@@ -22,15 +22,12 @@ abstract class GroomrDatabase : RoomDatabase() {
 
     companion object {
         private const val DATABASE_NAME = "tricount_db"
-        @Volatile private var INSTANCE: GroomrDatabase? = null
 
         fun getInstance(context: Context): GroomrDatabase =
-            synchronized(this) {
-                return INSTANCE ?: Room.databaseBuilder(
-                    context = context.applicationContext,
-                    klass = GroomrDatabase::class.java,
-                    name = DATABASE_NAME,
-                ).build().also { INSTANCE = it }
-            }
+            Room.databaseBuilder(
+                context = context.applicationContext,
+                klass = GroomrDatabase::class.java,
+                name = DATABASE_NAME,
+            ).build()
     }
 }

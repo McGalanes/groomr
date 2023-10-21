@@ -12,7 +12,7 @@ import com.github.mcgalanes.groomr.core.data.local.entity.relation.CriteriaWithG
 import com.github.mcgalanes.groomr.core.data.local.entity.relation.UserStoryWithCriteriaList
 
 @Dao
-interface GroomrDao {
+interface UserStoryDao {
     @Transaction
     @Query("SELECT * FROM `user_story` WHERE id = :id")
     suspend fun getUserStoryWithCriteriaList(id: Long): UserStoryWithCriteriaList

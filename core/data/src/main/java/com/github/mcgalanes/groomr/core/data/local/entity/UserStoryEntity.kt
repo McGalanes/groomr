@@ -3,6 +3,7 @@ package com.github.mcgalanes.groomr.core.data.local.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.github.mcgalanes.groomr.core.domain.model.UserStory
 
 private const val TABLE_NAME = "user_story"
 
@@ -42,3 +43,23 @@ data class UserStoryEntity(
         private const val COLUMN_NAME_TESTABLE = "testable"
     }
 }
+
+fun UserStoryEntity.toDomain(criteriaList: List<UserStory.Criteria>): UserStory =
+    UserStory(
+        id = id,
+        title = title,
+        persona = persona,
+        wish = wish,
+        purpose = purpose,
+        kpi = kpi,
+        businessValue = businessValue,
+        solution = solution,
+        enablers = enablers,
+        assets = assets,
+        estimation = estimation,
+        smallEnough = smallEnough,
+        independent = independent,
+        estimable = estimable,
+        testable = testable,
+        criteriaList = criteriaList,
+    )

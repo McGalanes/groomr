@@ -28,6 +28,8 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     implementation(libs.kotlinx.coroutines.android)
 
+    implementation(projects.groomr.core.domain)
+
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
 }

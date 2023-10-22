@@ -3,13 +3,14 @@ package com.github.mcgalanes.groomr.core.data.local.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.github.mcgalanes.groomr.core.domain.model.UserStory
 
 private const val TABLE_NAME = "criteria"
 
 @Entity(tableName = TABLE_NAME)
 data class CriteriaEntity(
     @ColumnInfo(COLUMN_NAME_ID) @PrimaryKey(autoGenerate = true) val id: Long,
-    @ColumnInfo(COLUMN_NAME_USER_STORY_ID) val userStoryId: String,
+    @ColumnInfo(COLUMN_NAME_USER_STORY_ID) val userStoryId: Long,
     @ColumnInfo(COLUMN_NAME_TITLE) val title: String,
 ) {
     companion object {
@@ -18,3 +19,11 @@ data class CriteriaEntity(
         private const val COLUMN_NAME_TITLE = "title"
     }
 }
+
+fun CriteriaEntity.toDomain(
+    gherkinLines: List<UserStory.Criteria.GherkinLine>,
+): UserStory.Criteria =
+    UserStory.Criteria(
+        title = title,
+        gherkinLines = gherkinLines,
+    )

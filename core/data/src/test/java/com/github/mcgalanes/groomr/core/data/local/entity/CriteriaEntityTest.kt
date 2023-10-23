@@ -2,8 +2,8 @@ package com.github.mcgalanes.groomr.core.data.local.entity
 
 import com.github.mcgalanes.groomr.core.data.fixture.nextCriteria
 import com.github.mcgalanes.groomr.core.data.fixture.nextCriteriaEntity
+import com.github.mcgalanes.groomr.core.data.fixture.nextGherkinLine
 import com.github.mcgalanes.groomr.core.domain.model.UserStory
-import com.github.mcgalanes.groomr.core.domain.model.UserStory.Criteria.GherkinLine.GherkinKey
 import org.junit.Assert
 import org.junit.Test
 import kotlin.random.Random
@@ -16,14 +16,8 @@ class CriteriaEntityTest {
         val criteriaEntity = Random.nextCriteriaEntity()
 
         val gherkinLines = listOf(
-            UserStory.Criteria.GherkinLine(
-                key = GherkinKey.Given,
-                value = "foo",
-            ),
-            UserStory.Criteria.GherkinLine(
-                key = GherkinKey.When,
-                value = "faa",
-            ),
+            Random.nextGherkinLine(),
+            Random.nextGherkinLine(),
         )
 
         // WHEN
@@ -32,6 +26,7 @@ class CriteriaEntityTest {
         // THEN
         Assert.assertEquals(
             UserStory.Criteria(
+                id = criteriaEntity.id,
                 title = criteriaEntity.title,
                 gherkinLines = gherkinLines,
             ),
@@ -50,6 +45,7 @@ class CriteriaEntityTest {
         // THEN
         Assert.assertEquals(
             CriteriaEntity(
+                id = criteria.id,
                 title = criteria.title,
                 userStoryId = 1,
             ),

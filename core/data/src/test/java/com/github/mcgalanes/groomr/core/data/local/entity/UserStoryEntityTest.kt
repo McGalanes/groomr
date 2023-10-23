@@ -1,9 +1,9 @@
 package com.github.mcgalanes.groomr.core.data.local.entity
 
+import com.github.mcgalanes.groomr.core.data.fixture.nextCriteria
 import com.github.mcgalanes.groomr.core.data.fixture.nextUserStory
 import com.github.mcgalanes.groomr.core.data.fixture.nextUserStoryEntity
 import com.github.mcgalanes.groomr.core.domain.model.UserStory
-import com.github.mcgalanes.groomr.core.domain.model.UserStory.Criteria.GherkinLine.GherkinKey
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import kotlin.random.Random
@@ -15,21 +15,11 @@ class UserStoryEntityTest {
         // GIVEN
         val userStoryEntity = Random.nextUserStoryEntity()
 
-        val criteriaList = listOf(
-            UserStory.Criteria(
-                title = "title",
-                gherkinLines = listOf(
-                    UserStory.Criteria.GherkinLine(
-                        key = GherkinKey.Given,
-                        value = "foo",
-                    ),
-                    UserStory.Criteria.GherkinLine(
-                        key = GherkinKey.When,
-                        value = "faa",
-                    ),
-                ),
-            ),
-        )
+        val criteriaList =
+            listOf(
+                Random.nextCriteria(),
+                Random.nextCriteria(),
+            )
 
         // WHEN
         val actual = userStoryEntity.toDomain(criteriaList)

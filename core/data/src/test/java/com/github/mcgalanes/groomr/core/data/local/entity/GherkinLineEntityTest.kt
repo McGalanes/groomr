@@ -40,6 +40,7 @@ class GherkinLineEntityTest {
         // THEN
         Assert.assertEquals(
             UserStory.Criteria.GherkinLine(
+                id = gherkinLineEntity.id,
                 key = gherkinLineEntity.gherkinKey.toDomain(),
                 value = gherkinLineEntity.value,
             ),
@@ -59,6 +60,7 @@ class GherkinLineEntityTest {
         // THEN
         Assert.assertEquals(
             GherkinLineEntity(
+                id = gherkinLine.id,
                 gherkinKey = gherkinLine.key.toEntity(),
                 value = gherkinLine.value,
                 criteriaId = criteriaId,

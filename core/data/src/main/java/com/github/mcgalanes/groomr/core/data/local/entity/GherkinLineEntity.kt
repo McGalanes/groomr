@@ -9,7 +9,7 @@ private const val TABLE_NAME = "gherkin_line"
 
 @Entity(tableName = TABLE_NAME)
 data class GherkinLineEntity(
-    @ColumnInfo(COLUMN_NAME_ID) @PrimaryKey(autoGenerate = true) val id: Long = 0,
+    @ColumnInfo(COLUMN_NAME_ID) @PrimaryKey(autoGenerate = true) val id: Long = -1,
     @ColumnInfo(COLUMN_NAME_GHERKIN_KEY) val gherkinKey: GherkinKey,
     @ColumnInfo(COLUMN_NAME_VALUE) val value: String,
     @ColumnInfo(COLUMN_NAME_CRITERIA_ID) val criteriaId: Long,
@@ -31,6 +31,7 @@ data class GherkinLineEntity(
 
 fun GherkinLineEntity.toDomain(): UserStory.Criteria.GherkinLine {
     return UserStory.Criteria.GherkinLine(
+        id = id,
         key = gherkinKey.toDomain(),
         value = value,
     )
@@ -46,6 +47,7 @@ fun GherkinLineEntity.GherkinKey.toDomain(): UserStory.Criteria.GherkinLine.Gher
 
 fun UserStory.Criteria.GherkinLine.toEntity(criteriaId: Long): GherkinLineEntity =
     GherkinLineEntity(
+        id = id,
         gherkinKey = key.toEntity(),
         value = value,
         criteriaId = criteriaId,

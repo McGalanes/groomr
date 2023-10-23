@@ -26,14 +26,12 @@ fun Random.nextUserStoryEntity(): UserStoryEntity =
         testable = nextBoolean(),
     )
 
-fun Random.nextGherkinLineEntity(
-    criteriaId: Long = nextLong(1..Long.MAX_VALUE),
-): GherkinLineEntity =
+fun Random.nextGherkinLineEntity(): GherkinLineEntity =
     GherkinLineEntity(
         id = nextLong(1..Long.MAX_VALUE),
         gherkinKey = GherkinLineEntity.GherkinKey.entries.toTypedArray().random(),
         value = "Value ${nextInt(1..100)}",
-        criteriaId = criteriaId,
+        criteriaId = nextLong(1..Long.MAX_VALUE),
     )
 
 fun Random.nextCriteriaEntity(): CriteriaEntity =

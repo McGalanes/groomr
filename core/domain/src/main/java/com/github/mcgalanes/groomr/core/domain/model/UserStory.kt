@@ -19,10 +19,12 @@ data class UserStory(
     val criteriaList: List<Criteria>,
 ) {
     data class Criteria(
+        val id: Long,
         val title: String,
         val gherkinLines: List<GherkinLine>,
     ) {
         data class GherkinLine(
+            val id: Long,
             val key: GherkinKey,
             val value: String,
         ) {

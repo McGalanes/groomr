@@ -3,6 +3,7 @@ package com.github.mcgalanes.groomr.core.data
 import com.github.mcgalanes.groomr.core.data.local.UserStoryDao
 import com.github.mcgalanes.groomr.core.data.local.entity.GherkinLineEntity
 import com.github.mcgalanes.groomr.core.data.local.entity.toDomain
+import com.github.mcgalanes.groomr.core.data.local.entity.toEntity
 import com.github.mcgalanes.groomr.core.domain.UserStoryRepository
 import com.github.mcgalanes.groomr.core.domain.model.UserStory
 import kotlinx.coroutines.flow.Flow
@@ -30,6 +31,14 @@ class DefaultUserStoryRepository
     }
 
     override suspend fun createUserStory(userStory: UserStory) {
-        TODO()
+        val userStoryId = dao.createUserStory(userStory.toEntity())
+
+        userStory.criteriaList.forEach { criteria ->
+            val criteriaId = dao.createCriteria(criteria.toEntity(userStoryId = userStoryId))
+
+            criteria.gherkinLines.forEach { gherkinLine ->
+                dao.createGherkinLine(gherkinLine.toEntity(criteriaId = criteriaId))
+            }
+        }
     }
 }

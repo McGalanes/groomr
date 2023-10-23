@@ -9,7 +9,7 @@ private const val TABLE_NAME = "user_story"
 
 @Entity(tableName = TABLE_NAME)
 data class UserStoryEntity(
-    @ColumnInfo(COLUMN_NAME_ID) @PrimaryKey(autoGenerate = true) val id: Long = 0,
+    @ColumnInfo(COLUMN_NAME_ID) @PrimaryKey(autoGenerate = true) val id: Long = -1,
     @ColumnInfo(COLUMN_NAME_TITLE) val title: String,
     @ColumnInfo(COLUMN_NAME_PERSONA) val persona: String,
     @ColumnInfo(COLUMN_NAME_WISH) val wish: String,

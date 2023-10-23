@@ -31,18 +31,22 @@ fun Random.nextUserStory(
         criteriaList = criteriaList,
     )
 
-fun Random.nextCriteria(): UserStory.Criteria =
+fun Random.nextCriteria(
+    gherkinLines: List<UserStory.Criteria.GherkinLine> = listOf(
+        Random.nextGherkinLine(),
+        Random.nextGherkinLine(),
+        Random.nextGherkinLine(),
+    ),
+): UserStory.Criteria =
     UserStory.Criteria(
+        id = nextLong(1..Long.MAX_VALUE),
         title = "Title ${nextInt(1..100)}",
-        gherkinLines = listOf(
-            Random.nextGherkinLine(),
-            Random.nextGherkinLine(),
-            Random.nextGherkinLine(),
-        ),
+        gherkinLines = gherkinLines,
     )
 
 fun Random.nextGherkinLine(): UserStory.Criteria.GherkinLine =
     UserStory.Criteria.GherkinLine(
+        nextLong(1..Long.MAX_VALUE),
         key = UserStory.Criteria.GherkinLine.GherkinKey.entries.toTypedArray().random(),
         value = "Value ${nextInt(1..100)}",
     )

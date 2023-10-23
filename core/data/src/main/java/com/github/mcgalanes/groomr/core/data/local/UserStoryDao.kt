@@ -8,7 +8,6 @@ import androidx.room.Transaction
 import com.github.mcgalanes.groomr.core.data.local.entity.CriteriaEntity
 import com.github.mcgalanes.groomr.core.data.local.entity.GherkinLineEntity
 import com.github.mcgalanes.groomr.core.data.local.entity.UserStoryEntity
-import com.github.mcgalanes.groomr.core.data.local.entity.relation.CriteriaWithGherkinLineList
 import com.github.mcgalanes.groomr.core.data.local.entity.relation.UserStoryWithCriteriaList
 import kotlinx.coroutines.flow.Flow
 
@@ -16,11 +15,10 @@ import kotlinx.coroutines.flow.Flow
 interface UserStoryDao {
     @Transaction
     @Query("SELECT * FROM `user_story` WHERE id = :id")
-    suspend fun getUserStoryWithCriteriaList(id: Long): Flow<UserStoryWithCriteriaList>
+    fun getUserStoryWithCriteriaList(id: Long): Flow<UserStoryWithCriteriaList>
 
-    @Transaction
-    @Query("SELECT * FROM `criteria` WHERE id = :id")
-    suspend fun getCriteriaWithGherkinLineList(id: Long): Flow<CriteriaWithGherkinLineList>
+    @Query("SELECT * FROM `gherkin_line` WHERE criteria_id = :id")
+    suspend fun getGherkinLinesByCriteriaId(id: Long): List<GherkinLineEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun createUserStory(userStory: UserStoryEntity): Long

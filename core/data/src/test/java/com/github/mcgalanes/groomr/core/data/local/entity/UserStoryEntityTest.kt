@@ -1,32 +1,18 @@
 package com.github.mcgalanes.groomr.core.data.local.entity
 
+import com.github.mcgalanes.groomr.core.data.fixture.nextUserStoryEntity
 import com.github.mcgalanes.groomr.core.domain.model.UserStory
 import com.github.mcgalanes.groomr.core.domain.model.UserStory.Criteria.GherkinLine.GherkinKey
 import org.junit.Assert.assertEquals
 import org.junit.Test
+import kotlin.random.Random
 
 class UserStoryEntityTest {
 
     @Test
     fun `should map user story to domain`() {
         // GIVEN
-        val userStoryEntity = UserStoryEntity(
-            id = 1L,
-            title = "title",
-            persona = "persona",
-            wish = "wish",
-            purpose = "purpose",
-            kpi = "kpi",
-            businessValue = 50,
-            solution = "solution",
-            enablers = "enablers",
-            assets = "assets",
-            estimation = 8,
-            smallEnough = true,
-            independent = true,
-            estimable = false,
-            testable = true,
-        )
+        val userStoryEntity = Random.nextUserStoryEntity()
 
         val criteriaList = listOf(
             UserStory.Criteria(

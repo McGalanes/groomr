@@ -1,8 +1,10 @@
 package com.github.mcgalanes.groomr.core.data.local.entity
 
+import com.github.mcgalanes.groomr.core.data.fixture.nextGherkinLineEntity
 import com.github.mcgalanes.groomr.core.domain.model.UserStory
 import org.junit.Assert
 import org.junit.Test
+import kotlin.random.Random
 
 class GherkinLineEntityTest {
 
@@ -29,12 +31,7 @@ class GherkinLineEntityTest {
     @Test
     fun `should map gherkin line to domain`() {
         // GIVEN
-        val gherkinLineEntity = GherkinLineEntity(
-            id = 1L,
-            criteriaId = 1L,
-            gherkinKey = GherkinLineEntity.GherkinKey.Given,
-            value = "value",
-        )
+        val gherkinLineEntity = Random.nextGherkinLineEntity()
 
         // WHEN
         val actual = gherkinLineEntity.toDomain()

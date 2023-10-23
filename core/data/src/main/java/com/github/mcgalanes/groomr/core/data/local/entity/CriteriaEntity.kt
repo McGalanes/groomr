@@ -9,7 +9,7 @@ private const val TABLE_NAME = "criteria"
 
 @Entity(tableName = TABLE_NAME)
 data class CriteriaEntity(
-    @ColumnInfo(COLUMN_NAME_ID) @PrimaryKey(autoGenerate = true) val id: Long,
+    @ColumnInfo(COLUMN_NAME_ID) @PrimaryKey(autoGenerate = true) val id: Long = 0,
     @ColumnInfo(COLUMN_NAME_USER_STORY_ID) val userStoryId: Long,
     @ColumnInfo(COLUMN_NAME_TITLE) val title: String,
 ) {
@@ -26,4 +26,10 @@ fun CriteriaEntity.toDomain(
     UserStory.Criteria(
         title = title,
         gherkinLines = gherkinLines,
+    )
+
+fun UserStory.Criteria.toEntity(userStoryId: Long): CriteriaEntity =
+    CriteriaEntity(
+        title = title,
+        userStoryId = userStoryId,
     )

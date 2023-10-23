@@ -1,5 +1,6 @@
 package com.github.mcgalanes.groomr.core.data.local.entity
 
+import com.github.mcgalanes.groomr.core.data.fixture.nextUserStory
 import com.github.mcgalanes.groomr.core.data.fixture.nextUserStoryEntity
 import com.github.mcgalanes.groomr.core.domain.model.UserStory
 import com.github.mcgalanes.groomr.core.domain.model.UserStory.Criteria.GherkinLine.GherkinKey
@@ -52,6 +53,37 @@ class UserStoryEntityTest {
                 estimable = userStoryEntity.estimable,
                 testable = userStoryEntity.testable,
                 criteriaList = criteriaList,
+            ),
+            actual,
+        )
+    }
+
+    @Test
+    fun `should map user story to entity`() {
+        // GIVEN
+        val userStory = Random.nextUserStory()
+
+        // WHEN
+        val actual = userStory.toEntity()
+
+        // THEN
+        assertEquals(
+            UserStoryEntity(
+                id = userStory.id,
+                title = userStory.title,
+                persona = userStory.persona,
+                wish = userStory.wish,
+                purpose = userStory.purpose,
+                kpi = userStory.kpi,
+                businessValue = userStory.businessValue,
+                solution = userStory.solution,
+                enablers = userStory.enablers,
+                assets = userStory.assets,
+                estimation = userStory.estimation,
+                smallEnough = userStory.smallEnough,
+                independent = userStory.independent,
+                estimable = userStory.estimable,
+                testable = userStory.testable,
             ),
             actual,
         )

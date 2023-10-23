@@ -6,5 +6,5 @@ import kotlinx.coroutines.flow.Flow
 interface UserStoryRepository {
     fun getUserStory(id: Long): Flow<UserStory>
 
-    suspend fun saveUserStory(userStory: UserStory)
+    suspend fun createUserStory(userStory: UserStory)
 }

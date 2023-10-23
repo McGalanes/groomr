@@ -9,7 +9,7 @@ private const val TABLE_NAME = "gherkin_line"
 
 @Entity(tableName = TABLE_NAME)
 data class GherkinLineEntity(
-    @ColumnInfo(COLUMN_NAME_ID) @PrimaryKey(autoGenerate = true) val id: Long,
+    @ColumnInfo(COLUMN_NAME_ID) @PrimaryKey(autoGenerate = true) val id: Long = 0,
     @ColumnInfo(COLUMN_NAME_GHERKIN_KEY) val gherkinKey: GherkinKey,
     @ColumnInfo(COLUMN_NAME_VALUE) val value: String,
     @ColumnInfo(COLUMN_NAME_CRITERIA_ID) val criteriaId: Long,
@@ -42,4 +42,19 @@ fun GherkinLineEntity.GherkinKey.toDomain(): UserStory.Criteria.GherkinLine.Gher
         GherkinLineEntity.GherkinKey.When -> UserStory.Criteria.GherkinLine.GherkinKey.When
         GherkinLineEntity.GherkinKey.Then -> UserStory.Criteria.GherkinLine.GherkinKey.Then
         GherkinLineEntity.GherkinKey.And -> UserStory.Criteria.GherkinLine.GherkinKey.And
+    }
+
+fun UserStory.Criteria.GherkinLine.toEntity(criteriaId: Long): GherkinLineEntity =
+    GherkinLineEntity(
+        gherkinKey = key.toEntity(),
+        value = value,
+        criteriaId = criteriaId,
+    )
+
+fun UserStory.Criteria.GherkinLine.GherkinKey.toEntity(): GherkinLineEntity.GherkinKey =
+    when (this) {
+        UserStory.Criteria.GherkinLine.GherkinKey.Given -> GherkinLineEntity.GherkinKey.Given
+        UserStory.Criteria.GherkinLine.GherkinKey.When -> GherkinLineEntity.GherkinKey.When
+        UserStory.Criteria.GherkinLine.GherkinKey.Then -> GherkinLineEntity.GherkinKey.Then
+        UserStory.Criteria.GherkinLine.GherkinKey.And -> GherkinLineEntity.GherkinKey.And
     }

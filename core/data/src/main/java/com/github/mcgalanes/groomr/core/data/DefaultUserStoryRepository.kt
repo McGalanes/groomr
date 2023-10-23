@@ -29,7 +29,7 @@ class DefaultUserStoryRepository
             }
     }
 
-    override suspend fun saveUserStory(userStory: UserStory) {
-        TODO("not implemented")
+    override suspend fun createUserStory(userStory: UserStory) {
+        TODO()
     }
 }

@@ -40,10 +40,10 @@ class DefaultUserStoryRepositoryTest {
             mockGetGherkinLinesByCriteriaId = { gherkinLines },
         )
 
-        val userStoryRepository = DefaultUserStoryRepository(dao)
+        val repository = DefaultUserStoryRepository(dao)
 
         // WHEN
-        val actual = userStoryRepository.getUserStory(userStory.id)
+        val actual = repository.getUserStory(userStory.id)
 
         // THEN
         Assert.assertEquals(

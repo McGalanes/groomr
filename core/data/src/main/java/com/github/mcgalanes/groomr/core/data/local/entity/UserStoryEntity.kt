@@ -63,3 +63,22 @@ fun UserStoryEntity.toDomain(criteriaList: List<UserStory.Criteria>): UserStory 
         testable = testable,
         criteriaList = criteriaList,
     )
+
+fun UserStory.toEntity(): UserStoryEntity =
+    UserStoryEntity(
+        id = id,
+        title = title,
+        persona = persona,
+        wish = wish,
+        purpose = purpose,
+        kpi = kpi,
+        businessValue = businessValue,
+        solution = solution,
+        enablers = enablers,
+        assets = assets,
+        estimation = estimation,
+        smallEnough = smallEnough,
+        independent = independent,
+        estimable = estimable,
+        testable = testable,
+    )

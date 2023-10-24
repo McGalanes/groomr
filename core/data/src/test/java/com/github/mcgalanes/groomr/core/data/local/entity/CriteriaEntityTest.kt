@@ -1,23 +1,21 @@
 package com.github.mcgalanes.groomr.core.data.local.entity
 
-import com.github.mcgalanes.groomr.core.data.fixture.nextCriteria
-import com.github.mcgalanes.groomr.core.data.fixture.nextCriteriaEntity
-import com.github.mcgalanes.groomr.core.data.fixture.nextGherkinLine
+import com.github.mcgalanes.groomr.core.data.fixture.EntityFixtures
+import com.github.mcgalanes.groomr.core.domain.fixture.DomainFixtures
 import com.github.mcgalanes.groomr.core.domain.model.UserStory
 import org.junit.Assert
 import org.junit.Test
-import kotlin.random.Random
 
 class CriteriaEntityTest {
 
     @Test
     fun `should map criteria to domain`() {
         // GIVEN
-        val criteriaEntity = Random.nextCriteriaEntity()
+        val criteriaEntity = EntityFixtures.randomCriteriaEntity()
 
         val gherkinLines = listOf(
-            Random.nextGherkinLine(),
-            Random.nextGherkinLine(),
+            DomainFixtures.randomGherkinLine(),
+            DomainFixtures.randomGherkinLine(),
         )
 
         // WHEN
@@ -37,7 +35,7 @@ class CriteriaEntityTest {
     @Test
     fun `should map criteria to entity`() {
         // GIVEN
-        val criteria = Random.nextCriteria()
+        val criteria = DomainFixtures.randomCriteria()
 
         // WHEN
         val actual = criteria.toEntity(userStoryId = 1)

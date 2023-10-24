@@ -1,24 +1,22 @@
 package com.github.mcgalanes.groomr.core.data.local.entity
 
-import com.github.mcgalanes.groomr.core.data.fixture.nextCriteria
-import com.github.mcgalanes.groomr.core.data.fixture.nextUserStory
-import com.github.mcgalanes.groomr.core.data.fixture.nextUserStoryEntity
+import com.github.mcgalanes.groomr.core.data.fixture.EntityFixtures
+import com.github.mcgalanes.groomr.core.domain.fixture.DomainFixtures
 import com.github.mcgalanes.groomr.core.domain.model.UserStory
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import kotlin.random.Random
 
 class UserStoryEntityTest {
 
     @Test
     fun `should map user story to domain`() {
         // GIVEN
-        val userStoryEntity = Random.nextUserStoryEntity()
+        val userStoryEntity = EntityFixtures.randomUserStoryEntity()
 
         val criteriaList =
             listOf(
-                Random.nextCriteria(),
-                Random.nextCriteria(),
+                DomainFixtures.randomCriteria(),
+                DomainFixtures.randomCriteria(),
             )
 
         // WHEN
@@ -51,7 +49,7 @@ class UserStoryEntityTest {
     @Test
     fun `should map user story to entity`() {
         // GIVEN
-        val userStory = Random.nextUserStory()
+        val userStory = DomainFixtures.randomUserStory()
 
         // WHEN
         val actual = userStory.toEntity()

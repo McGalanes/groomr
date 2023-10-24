@@ -1,4 +1,4 @@
-package com.github.mcgalanes.groomr.core.domain
+package com.github.mcgalanes.groomr.core.domain.repository
 
 import com.github.mcgalanes.groomr.core.domain.model.UserStory
 import kotlinx.coroutines.flow.Flow

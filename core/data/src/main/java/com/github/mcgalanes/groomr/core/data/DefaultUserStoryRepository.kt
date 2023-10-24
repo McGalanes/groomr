@@ -4,7 +4,7 @@ import com.github.mcgalanes.groomr.core.data.local.UserStoryDao
 import com.github.mcgalanes.groomr.core.data.local.entity.GherkinLineEntity
 import com.github.mcgalanes.groomr.core.data.local.entity.toDomain
 import com.github.mcgalanes.groomr.core.data.local.entity.toEntity
-import com.github.mcgalanes.groomr.core.domain.UserStoryRepository
+import com.github.mcgalanes.groomr.core.domain.repository.UserStoryRepository
 import com.github.mcgalanes.groomr.core.domain.model.UserStory
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map

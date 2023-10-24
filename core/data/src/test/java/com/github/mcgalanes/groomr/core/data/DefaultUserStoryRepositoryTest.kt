@@ -1,20 +1,17 @@
 package com.github.mcgalanes.groomr.core.data
 
 import com.github.mcgalanes.groomr.core.data.fake.FakeUserStoryDao
-import com.github.mcgalanes.groomr.core.data.fixture.nextCriteriaEntity
-import com.github.mcgalanes.groomr.core.data.fixture.nextGherkinLineEntity
-import com.github.mcgalanes.groomr.core.data.fixture.nextUserStory
-import com.github.mcgalanes.groomr.core.data.fixture.nextUserStoryEntity
+import com.github.mcgalanes.groomr.core.data.fixture.EntityFixtures
 import com.github.mcgalanes.groomr.core.data.local.UserStoryDao
 import com.github.mcgalanes.groomr.core.data.local.entity.relation.UserStoryWithCriteriaList
 import com.github.mcgalanes.groomr.core.data.local.entity.toDomain
-import com.github.mcgalanes.groomr.core.domain.UserStoryRepository
+import com.github.mcgalanes.groomr.core.domain.fixture.DomainFixtures
+import com.github.mcgalanes.groomr.core.domain.repository.UserStoryRepository
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
-import org.junit.Assert
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-import kotlin.random.Random
 
 class DefaultUserStoryRepositoryTest {
 
@@ -30,13 +27,13 @@ class DefaultUserStoryRepositoryTest {
     @Test
     fun `get user story, should return user story`() = runTest {
         // GIVEN
-        val userStoryEntity = Random.nextUserStoryEntity()
-        val criteriaEntity = Random.nextCriteriaEntity()
+        val userStoryEntity = EntityFixtures.randomUserStoryEntity()
+        val criteriaEntity = EntityFixtures.randomCriteriaEntity()
         val gherkinLineEntityList =
             listOf(
-                Random.nextGherkinLineEntity(),
-                Random.nextGherkinLineEntity(),
-                Random.nextGherkinLineEntity(),
+                EntityFixtures.randomGherkinLineEntity(),
+                EntityFixtures.randomGherkinLineEntity(),
+                EntityFixtures.randomGherkinLineEntity(),
             )
 
         val userStoryWithCriteriaList =
@@ -65,18 +62,18 @@ class DefaultUserStoryRepositoryTest {
                     },
                 )
 
-        Assert.assertEquals(expected, actual.first())
+        assertEquals(expected, actual.first())
     }
 
     @Test
     fun `save user story, should save user story`() = runTest {
         // GIVEN
-        val userStory = Random.nextUserStory()
+        val userStory = DomainFixtures.randomUserStory()
 
         // WHEN
         repository.createUserStory(userStory)
 
         // THEN
-        Assert.assertEquals(userStory, repository.getUserStory(userStory.id).first())
+        assertEquals(userStory, repository.getUserStory(userStory.id).first())
     }
 }

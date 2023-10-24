@@ -17,10 +17,12 @@
 @Suppress("DSL_SCOPE_VIOLATION") // Remove when fixed https://youtrack.jetbrains.com/issue/KTIJ-19369
 plugins {
     alias(libs.plugins.groomr.android.library)
+    `java-test-fixtures`
 }
 
 android {
     namespace = "com.github.mcgalanes.groomr.core.domain"
+    testFixtures.enable = true
 }
 
 dependencies {

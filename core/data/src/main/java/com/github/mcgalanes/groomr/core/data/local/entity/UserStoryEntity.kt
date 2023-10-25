@@ -44,7 +44,7 @@ data class UserStoryEntity(
     }
 }
 
-fun UserStoryEntity.toDomain(criteriaList: List<UserStory.Criteria>): UserStory =
+fun UserStoryEntity.toDomain(criterias: List<UserStory.Criteria>): UserStory =
     UserStory(
         id = id,
         title = title,
@@ -61,7 +61,7 @@ fun UserStoryEntity.toDomain(criteriaList: List<UserStory.Criteria>): UserStory 
         independent = independent,
         estimable = estimable,
         testable = testable,
-        criteriaList = criteriaList,
+        criterias = criterias,
     )
 
 fun UserStory.toEntity(): UserStoryEntity =

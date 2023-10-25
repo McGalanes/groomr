@@ -39,6 +39,7 @@ class CreateUserStoryUseCaseTest {
         // GIVEN
         val repository =
             object : UserStoryRepository {
+                override fun getUserStories(): Flow<List<UserStory>> = throw NotImplementedError()
                 override fun getUserStory(id: Long): Flow<UserStory> = throw NotImplementedError()
                 override suspend fun createUserStory(userStory: UserStory) = throw Exception()
             }

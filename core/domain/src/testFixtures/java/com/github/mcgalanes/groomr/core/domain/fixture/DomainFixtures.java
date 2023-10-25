@@ -15,10 +15,10 @@ public class DomainFixtures {
     private static final Random random = Random.Default;
 
     public static UserStory randomUserStory() {
-        List<Criteria> criteriaList = new ArrayList<>();
-        criteriaList.add(randomCriteria());
-        criteriaList.add(randomCriteria());
-        criteriaList.add(randomCriteria());
+        List<Criteria> criterias = new ArrayList<>();
+        criterias.add(randomCriteria());
+        criterias.add(randomCriteria());
+        criterias.add(randomCriteria());
 
         return new UserStory(
             random.nextLong(1, Long.MAX_VALUE),
@@ -36,7 +36,7 @@ public class DomainFixtures {
             random.nextBoolean(),
             random.nextBoolean(),
             random.nextBoolean(),
-            criteriaList
+            criterias
         );
     }
 

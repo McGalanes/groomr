@@ -4,24 +4,33 @@ import com.github.mcgalanes.groomr.core.data.local.UserStoryDao
 import com.github.mcgalanes.groomr.core.data.local.entity.CriteriaEntity
 import com.github.mcgalanes.groomr.core.data.local.entity.GherkinLineEntity
 import com.github.mcgalanes.groomr.core.data.local.entity.UserStoryEntity
-import com.github.mcgalanes.groomr.core.data.local.entity.relation.UserStoryWithCriteriaList
+import com.github.mcgalanes.groomr.core.data.local.entity.relation.UserStoryWithCriterias
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 
 internal class FakeUserStoryDao : UserStoryDao {
     private val userStoriesFlow = MutableStateFlow(emptyList<UserStoryEntity>())
-    private val criteriaListFlow = MutableStateFlow(emptyList<CriteriaEntity>())
+    private val criteriasFlow = MutableStateFlow(emptyList<CriteriaEntity>())
     private val gherkinLinesFlow = MutableStateFlow(emptyList<GherkinLineEntity>())
 
-    override fun getUserStoryWithCriteriaList(id: Long): Flow<UserStoryWithCriteriaList> =
+
+    override fun getUserStoriesWithCriterias(): Flow<List<UserStoryWithCriterias>> =
+        userStoriesFlow
+            .map { entities ->
+                entities.map { getUserStoryWithCriterias(it.id).first() }
+            }
+
+
+    override fun getUserStoryWithCriterias(id: Long): Flow<UserStoryWithCriterias> =
         userStoriesFlow
             .map { userStories -> userStories.first { it.id == id } }
             .map { userStory ->
-                UserStoryWithCriteriaList(
+                UserStoryWithCriterias(
                     userStory = userStory,
-                    criteriaList = criteriaListFlow.value.filter { it.userStoryId == id },
+                    criterias = criteriasFlow.value.filter { it.userStoryId == id },
                 )
             }
 
@@ -34,7 +43,7 @@ internal class FakeUserStoryDao : UserStoryDao {
     }
 
     override suspend fun createCriteria(criteria: CriteriaEntity): Long {
-        criteriaListFlow.update { (it + criteria) }
+        criteriasFlow.update { (it + criteria) }
         return criteria.id
     }
 

@@ -16,7 +16,7 @@ data class UserStory(
     val independent: Boolean,
     val estimable: Boolean,
     val testable: Boolean,
-    val criteriaList: List<Criteria>,
+    val criterias: List<Criteria>,
 ) {
     data class Criteria(
         val id: Long,

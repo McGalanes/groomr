@@ -13,14 +13,14 @@ class UserStoryEntityTest {
         // GIVEN
         val userStoryEntity = EntityFixtures.randomUserStoryEntity()
 
-        val criteriaList =
+        val criterias =
             listOf(
                 DomainFixtures.randomCriteria(),
                 DomainFixtures.randomCriteria(),
             )
 
         // WHEN
-        val actual = userStoryEntity.toDomain(criteriaList)
+        val actual = userStoryEntity.toDomain(criterias)
 
         // THEN
         assertEquals(
@@ -40,7 +40,7 @@ class UserStoryEntityTest {
                 independent = userStoryEntity.independent,
                 estimable = userStoryEntity.estimable,
                 testable = userStoryEntity.testable,
-                criteriaList = criteriaList,
+                criterias = criterias,
             ),
             actual,
         )

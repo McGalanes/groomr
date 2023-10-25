@@ -23,7 +23,7 @@ class CreateUserStoryUseCaseTest {
     }
 
     @Test
-    fun `should create user story with success`() = runTest {
+    fun `should create user story when success`() = runTest {
         // GIVEN
         val userStory = DomainFixtures.randomUserStory()
 

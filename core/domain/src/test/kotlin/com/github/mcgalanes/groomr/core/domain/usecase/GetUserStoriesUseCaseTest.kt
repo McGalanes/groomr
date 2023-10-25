@@ -9,21 +9,22 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 
 
-class GetUserStoryUseCaseTest {
+class GetUserStoriesUseCaseTest {
 
     @Test
-    fun `should return user story`() = runTest {
+    fun `should return user stories`() = runTest {
         // GIVEN
         val repository: UserStoryRepository = FakeUserStoryRepository()
-        val useCase = GetUserStoryUseCase(repository)
+        val useCase = GetUserStoriesUseCase(repository)
 
-        val userStory = DomainFixtures.randomUserStory()
-        repository.createUserStory(userStory)
+        val userStories =
+            List(5) { DomainFixtures.randomUserStory() }
+                .onEach { repository.createUserStory(it) }
 
         // WHEN
-        val actual = useCase(userStory.id)
+        val actual = useCase()
 
         // THEN
-        assertEquals(userStory, actual.first())
+        assertEquals(userStories, actual.first())
     }
 }

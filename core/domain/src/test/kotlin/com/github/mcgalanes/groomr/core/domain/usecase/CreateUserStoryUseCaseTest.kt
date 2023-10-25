@@ -28,10 +28,10 @@ class CreateUserStoryUseCaseTest {
         val userStory = DomainFixtures.randomUserStory()
 
         // WHEN
-        val result = useCase(userStory)
+        val actual = useCase(userStory)
 
         // THEN
-        Assert.assertTrue(result.isSuccess)
+        Assert.assertTrue(actual.isSuccess)
     }
 
     @Test
@@ -49,9 +49,9 @@ class CreateUserStoryUseCaseTest {
         val userStory = DomainFixtures.randomUserStory()
 
         // WHEN
-        val result = useCase(userStory)
+        val actual = useCase(userStory)
 
         // THEN
-        Assert.assertTrue(result.isFailure)
+        Assert.assertTrue(actual.isFailure)
     }
 }

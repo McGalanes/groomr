@@ -1,10 +1,7 @@
 package com.github.mcgalanes.groomr.core.data
 
 import com.github.mcgalanes.groomr.core.data.fake.FakeUserStoryDao
-import com.github.mcgalanes.groomr.core.data.fixture.EntityFixtures
 import com.github.mcgalanes.groomr.core.data.local.UserStoryDao
-import com.github.mcgalanes.groomr.core.data.local.entity.relation.UserStoryWithCriterias
-import com.github.mcgalanes.groomr.core.data.local.entity.toDomain
 import com.github.mcgalanes.groomr.core.domain.fixture.DomainFixtures
 import com.github.mcgalanes.groomr.core.domain.repository.UserStoryRepository
 import kotlinx.coroutines.flow.first
@@ -42,42 +39,18 @@ class DefaultUserStoryRepositoryTest {
     @Test
     fun `get user story, should return user story`() = runTest {
         // GIVEN
-        val userStoryEntity = EntityFixtures.randomUserStoryEntity()
-        val criteriaEntity = EntityFixtures.randomCriteriaEntity()
-        val gherkinLineEntityList =
-            listOf(
-                EntityFixtures.randomGherkinLineEntity(),
-                EntityFixtures.randomGherkinLineEntity(),
-                EntityFixtures.randomGherkinLineEntity(),
-            )
+        val userStories =
+            List(5) {
+                DomainFixtures.randomUserStory()
+            }.onEach { repository.createUserStory(it) }
 
-        val userStoryWithCriterias =
-            UserStoryWithCriterias(
-                userStory = userStoryEntity,
-                criterias = listOf(criteriaEntity),
-            )
-
-        val userStoryId = dao.createUserStory(userStoryEntity)
-        val criteriaId = dao.createCriteria(criteriaEntity.copy(userStoryId = userStoryId))
-        gherkinLineEntityList.map { dao.createGherkinLine(it.copy(criteriaId = criteriaId)) }
+        val userStory = userStories.random()
 
         // WHEN
-        val actual = repository.getUserStory(userStoryId)
+        val actual = repository.getUserStory(userStory.id)
 
         // THEN
-        val expected =
-            userStoryEntity
-                .toDomain(
-                    criterias = userStoryWithCriterias.criterias.map { criteria ->
-                        criteria.toDomain(
-                            gherkinLines = gherkinLineEntityList.map { gherkinLine ->
-                                gherkinLine.toDomain()
-                            },
-                        )
-                    },
-                )
-
-        assertEquals(expected, actual.first())
+        assertEquals(userStory, actual.first())
     }
 
     @Test

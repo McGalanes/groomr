@@ -26,4 +26,5 @@ android {
 dependencies {
     implementation(libs.androidx.test.runner)
     implementation(libs.hilt.android.testing)
+    implementation(libs.kotlinx.coroutines.test)
 }

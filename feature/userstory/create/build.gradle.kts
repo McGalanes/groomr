@@ -17,7 +17,7 @@
 @Suppress("DSL_SCOPE_VIOLATION") // Remove when fixed https://youtrack.jetbrains.com/issue/KTIJ-19369
 plugins {
     alias(libs.plugins.groomr.android.library)
-    alias(libs.plugins.groomr.compose)
+    alias(libs.plugins.groomr.android.compose)
 }
 
 android {

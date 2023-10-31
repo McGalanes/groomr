@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.mcgalanes.groomr.core.domain.model.UserStory
 import com.github.mcgalanes.groomr.core.domain.usecase.GetUserStoriesUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.collections.immutable.toImmutableList
@@ -14,6 +15,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class UserStoryListViewModel
 @Inject constructor(
     getUserStories: GetUserStoriesUseCase,

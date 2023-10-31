@@ -15,7 +15,7 @@ object DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideDatabase(
+    fun providesDatabase(
         @ApplicationContext context: Context,
     ): GroomrDatabase = GroomrDatabase.getInstance(context)
 }

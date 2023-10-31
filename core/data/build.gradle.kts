@@ -14,9 +14,10 @@
  * limitations under the License.
  */
 
-@Suppress("DSL_SCOPE_VIOLATION") // Remove when fixed https://youtrack.jetbrains.com/issue/KTIJ-19369
 plugins {
     alias(libs.plugins.groomr.android.library)
+    alias(libs.plugins.groomr.android.room)
+    alias(libs.plugins.groomr.android.hilt)
     `java-test-fixtures`
 }
 
@@ -26,11 +27,9 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.room.ktx)
-    implementation(libs.androidx.room.runtime)
-    implementation(libs.kotlinx.coroutines.android)
-
     implementation(projects.groomr.core.domain)
+
+    implementation(libs.kotlinx.coroutines.android)
 
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)

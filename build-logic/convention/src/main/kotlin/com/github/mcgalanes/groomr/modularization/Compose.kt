@@ -15,8 +15,6 @@ internal fun Project.configureCompose(commonExtension: BaseExtension) {
             compose = true
         }
 
-        val libs: VersionCatalog = extensions.getByType<VersionCatalogsExtension>().named("libs")
-
         composeOptions {
             kotlinCompilerExtensionVersion =
                 libs.findVersion("androidxComposeCompiler").get().toString()

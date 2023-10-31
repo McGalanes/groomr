@@ -16,6 +16,7 @@
 
 import com.android.build.gradle.TestExtension
 import com.github.mcgalanes.groomr.modularization.configureAndroid
+import com.github.mcgalanes.groomr.modularization.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalogsExtension
@@ -37,7 +38,6 @@ class AndroidTestConventionPlugin : Plugin<Project> {
                 configureAndroid(this)
             }
 
-            val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
             dependencies {
                 add("implementation", libs.findLibrary("androidx.test.core").get())
                 add("implementation", libs.findLibrary("androidx.compose.ui.test.junit4").get())

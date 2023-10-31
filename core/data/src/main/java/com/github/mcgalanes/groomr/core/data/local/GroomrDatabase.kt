@@ -18,14 +18,14 @@ import com.github.mcgalanes.groomr.core.data.local.entity.UserStoryEntity
 )
 abstract class GroomrDatabase : RoomDatabase() {
 
-    abstract val dao: UserStoryDao
+    abstract val userStoryDao: UserStoryDao
 
     companion object {
         private const val DATABASE_NAME = "tricount_db"
 
         fun getInstance(context: Context): GroomrDatabase =
             Room.databaseBuilder(
-                context = context.applicationContext,
+                context = context,
                 klass = GroomrDatabase::class.java,
                 name = DATABASE_NAME,
             ).build()

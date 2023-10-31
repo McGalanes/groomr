@@ -22,7 +22,7 @@ material = "1.5.1"
 mockk = "1.13.8"
 
 [libraries]
-android-tools-build-gradle-plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
+android-gradle-plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidxActivity" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidxComposeBom" }
 androidx-compose-compiler = { module = "androidx.compose.compiler:compiler", version.ref = "androidxComposeCompiler" }
@@ -56,6 +56,7 @@ kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-p
 kotlinx-collections-immutable = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version.ref = "kotlinCollectionsImmutable" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
+ksp-gradle-plugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 
 [plugins]
@@ -67,7 +68,11 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+
+# Plugins defined by this project
 groomr-android-application = { id = "groomr.android.application", version = "unspecified" }
+groomr-android-compose = { id = "groomr.android.compose", version = "unspecified" }
+groomr-android-hilt = { id = "groomr.android.hilt", version = "unspecified" }
 groomr-android-library = { id = "groomr.android.library", version = "unspecified" }
+groomr-android-room = { id = "groomr.android.room", version = "unspecified" }
 groomr-android-test = { id = "groomr.android.test", version = "unspecified" }
-groomr-compose = { id = "groomr.compose", version = "unspecified" }

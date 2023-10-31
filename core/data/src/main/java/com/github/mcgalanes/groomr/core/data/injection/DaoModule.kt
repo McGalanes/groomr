@@ -14,5 +14,5 @@ object DaoModule {
     @Provides
     fun providesUserStoryDao(
         database: GroomrDatabase,
-    ): UserStoryDao = database.dao
+    ): UserStoryDao = database.userStoryDao
 }

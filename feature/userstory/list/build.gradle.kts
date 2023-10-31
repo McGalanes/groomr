@@ -21,10 +21,11 @@ plugins {
 }
 
 android {
-    namespace = "com.github.mcgalanes.groomr.feature.userstory.create"
+    namespace = "com.github.mcgalanes.groomr.feature.userstory.list"
 }
 
 dependencies {
+    implementation(projects.core.domain)
     implementation(projects.core.ui)
 
     // Core Android dependencies
@@ -41,6 +42,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.material.icons)
+    implementation(libs.kotlinx.collections.immutable)
 
     // Tooling
     debugImplementation(libs.androidx.compose.ui.tooling)
@@ -48,4 +50,8 @@ dependencies {
 
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.mockk)
+
+    testImplementation(projects.core.testing)
+    testImplementation(testFixtures(projects.core.domain))
 }

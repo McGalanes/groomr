@@ -94,8 +94,8 @@ private fun UserStoryListScreen(
     LazyColumn(
         modifier = modifier
             .background(MaterialTheme.colorScheme.background),
-        contentPadding = PaddingValues(24.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp),
+        contentPadding = PaddingValues(vertical = 24.dp, horizontal = 16.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         stickyHeader {
             Text(
@@ -107,10 +107,7 @@ private fun UserStoryListScreen(
         }
 
         items(state.userStories) { userStory ->
-            UserStoryItem(
-                title = userStory.title,
-                estimation = userStory.estimation,
-            )
+            UserStoryItem(userStory = userStory)
         }
     }
 }

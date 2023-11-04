@@ -20,16 +20,20 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath(libs.android.tools.build.gradle.plugin)
+        classpath(libs.android.gradle.plugin)
         classpath(libs.kotlin.gradle.plugin)
         classpath(libs.hilt.gradle.plugin)
     }
 }
 
+// Lists all plugins used throughout the project without applying them.
 plugins {
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.android.test) apply false
+    alias(libs.plugins.hilt.gradle) apply false
+    alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.kotlin.jvm) apply false
-    alias(libs.plugins.groomr.android.application) apply false
-    alias(libs.plugins.groomr.android.library) apply false
-    alias(libs.plugins.groomr.android.test) apply false
-    alias(libs.plugins.groomr.compose) apply false
+    alias(libs.plugins.kotlin.kapt) apply false
+    alias(libs.plugins.ksp) apply false
 }

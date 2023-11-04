@@ -16,6 +16,7 @@
 
 import com.android.build.gradle.LibraryExtension
 import com.github.mcgalanes.groomr.modularization.configureAndroid
+import com.github.mcgalanes.groomr.modularization.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalogsExtension
@@ -37,7 +38,6 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                 configureAndroid(this)
             }
 
-            val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
             dependencies {
                 add("implementation", libs.findLibrary("hilt.android").get())
                 add("kapt", libs.findLibrary("hilt.compiler").get())

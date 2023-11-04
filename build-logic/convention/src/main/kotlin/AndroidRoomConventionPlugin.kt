@@ -14,22 +14,21 @@
  *   limitations under the License.
  */
 
-import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
-import com.github.mcgalanes.groomr.modularization.configureAndroid
+import com.github.mcgalanes.groomr.modularization.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.dependencies
 
-class AndroidApplicationConventionPlugin : Plugin<Project> {
+class AndroidRoomConventionPlugin : Plugin<Project> {
+
     override fun apply(target: Project) {
         with(target) {
-            with(pluginManager) {
-                apply("com.android.application")
-                apply("org.jetbrains.kotlin.android")
-            }
+            pluginManager.apply("com.google.devtools.ksp")
 
-            extensions.configure<BaseAppModuleExtension> {
-                configureAndroid(commonExtension = this)
+            dependencies {
+                add("implementation", libs.findLibrary("androidx.room.runtime").get())
+                add("implementation", libs.findLibrary("androidx.room.ktx").get())
+                add("ksp", libs.findLibrary("androidx.room.compiler").get())
             }
         }
     }

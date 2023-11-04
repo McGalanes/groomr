@@ -26,29 +26,35 @@ java {
 }
 
 dependencies {
-    compileOnly(libs.android.tools.build.gradle.plugin)
+    compileOnly(libs.android.gradle.plugin)
     compileOnly(libs.kotlin.gradle.plugin)
+    compileOnly(libs.ksp.gradle.plugin)
 }
 
 gradlePlugin {
-    /**
-     * Register convention plugins so they are available in the build scripts of the application
-     */
     plugins {
         register("groomrAndroidApplication") {
             id = "groomr.android.application"
             implementationClass = "AndroidApplicationConventionPlugin"
         }
+        register("groomrAndroidHilt") {
+            id = "groomr.android.hilt"
+            implementationClass = "AndroidHiltConventionPlugin"
+        }
         register("groomrAndroidLibrary") {
             id = "groomr.android.library"
             implementationClass = "AndroidLibraryConventionPlugin"
+        }
+        register("groomrAndroidRoom") {
+            id = "groomr.android.room"
+            implementationClass = "AndroidRoomConventionPlugin"
         }
         register("groomrAndroidTest") {
             id = "groomr.android.test"
             implementationClass = "AndroidTestConventionPlugin"
         }
-        register("groomrCompose") {
-            id = "groomr.compose"
+        register("groomrAndroidCompose") {
+            id = "groomr.android.compose"
             implementationClass = "ComposeConventionPlugin"
         }
         register("groomrDynamic") {

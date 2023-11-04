@@ -19,8 +19,9 @@ package com.github.mcgalanes.groomr.ui
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import com.github.mcgalanes.groomr.feature.userstory.create.navigation.createUserStoryRoute
 import com.github.mcgalanes.groomr.feature.userstory.create.navigation.createUserStoryScreen
+import com.github.mcgalanes.groomr.feature.userstory.list.navigation.userStoryListRoute
+import com.github.mcgalanes.groomr.feature.userstory.list.navigation.userStoryListScreen
 
 @Composable
 fun MainNavigation() {
@@ -28,8 +29,9 @@ fun MainNavigation() {
 
     NavHost(
         navController = navController,
-        startDestination = createUserStoryRoute,
+        startDestination = userStoryListRoute,
     ) {
         createUserStoryScreen()
+        userStoryListScreen()
     }
 }
